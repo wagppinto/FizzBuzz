@@ -10,46 +10,36 @@
 
 @implementation AppDelegate
 
-// If the number contains the character three it should return true
-// Otherwise it should return false
 
-BOOL isBuzzed (int buz){ // Add a method called isBuzzed that takes an integer and returns a bool
-    
-    switch (buz) {
-        case %3 == 0:     // The method should check to see if the integer is a multiple of 3
-            return true;  // If the number is a multiple of 3 it should return true
-            break;
+BOOL isBuzzed (int buz){ //Add a method called isBuzzed that takes an integer and returns a bool
 
-        case NSNumericSearch:    // If the number is not a multiple of 3 the method should check to see if the number contains the character 3
-            return true;
-            break;
-            
-        default:
-            return false;
-            break;
+    if (buz %3 == 0 || [[NSString stringWithFormat:@"%d", buz] containsString:@"3"]) {
+        return true;
+    } else {
+        return false;
     }
     
 }
 
-BOOL isFizzed (int fizz) {     // Add a method called isFizzed that takes an integer and returns a bool
+BOOL isFizzed (int fizz) { //Add a method called isFizzed that takes an integer and returns a bool
 
-    // The method should check to see if the integer is a multiple of 5
-    // If the number is a multiple of 5 it should return true
-    // If the number is not a multiple of 5 the method should check to see if the number contains the character 5
-    // If the number contains the character three it should return true
-    // Otherwise it should return false
-    
-    
-    
-    
+    if (fizz %5 == 0 || [[NSString stringWithFormat:@"%d", fizz] containsString:@"5"]) {
+        return true;
+    } else {
+        return false;
+    }
     
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    // Insert code here
-    
+
+    for(int i = 1 ; i < 100; i++) { //In your didFinishLaunching method loop through numbers 1-100
+        if (isBuzzed(i)) {NSLog(@" %i is Buzz", i);}
+        if (isFizzed(i)) {NSLog(@" %i is Fizz", i);}
+//        if (isFizzed(i) || isBuzzed(i)) {NSLog(@" %i is BuzzFizz", i);}
+        
+    }
+
     return YES;
 }
 
